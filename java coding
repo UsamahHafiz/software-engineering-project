@@ -1,0 +1,281 @@
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
+import java.awt.Color;
+import java.awt.Component;
+
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
+import javax.swing.ImageIcon;
+
+public class BookTaxiOnline extends JFrame{
+	
+	private JFrame frame;
+	int index;
+	int maxindex =0;
+	int status = 0;
+	String name1;
+
+	private String[] chooseRoute={"A  (UIA-UTM)","B  (UIA-UKM)","C  (UIA-UM)","D  (UIA-UPM)","E  (UIA-USIM)"};
+	private String[] chooseCar ={"1 (Proton Perdana) ", "2 (Proton Persona)"," 3 (Proton Saga) "};
+	private double[] routePrice = {5, 10, 15, 20, 25};
+	private double[] carPrice = {3, 2, 1};
+	private JComboBox<String> route= new JComboBox<String>(chooseRoute);
+	private JComboBox<String> car= new JComboBox<String>(chooseCar);
+	private JTextField  phoneNum;
+	private JTextField name;
+	private String phoneNum1;
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					BookTaxiOnline window = new BookTaxiOnline();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public BookTaxiOnline() {
+		initialize();
+		}
+	
+	private void initialize(){
+		
+		index = 0;
+		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\User\\Google Drive\\Software Engineering\\logo.png"));
+		frame.setResizable(false);
+		frame.setTitle("BookTaxiOnline among IPTA in Klang Valley");
+		frame.setBounds(100, 100, 820, 600);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setFont(new Font("Bookman Old Style", Font.BOLD, 14));
+		tabbedPane.setBackground(new Color(240, 255, 255));
+		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
+		//HOME
+		maxindex = 3;
+		JPanel home = new JPanel();
+		home.setBackground(new Color(245, 255, 250));
+		tabbedPane.addTab("Home", null, home, null);
+		home.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\User\\Google Drive\\Software Engineering\\taxi-cab4.png"));
+		lblNewLabel.setBounds(0, 0, 900, 360);
+		home.add(lblNewLabel);
+		
+		JLabel lblThisProgramWill = new JLabel("Welcome to our application for BookTaxiOnline");
+		lblThisProgramWill.setBounds(180, 300, 800, 200);
+		lblThisProgramWill.setFont(new Font("Garamond", Font.BOLD, 25));
+		home.add(lblThisProgramWill);
+		
+		JLabel lblThisProgramWill2 = new JLabel(" We will connect and link you among public university within Klang Valley");
+		lblThisProgramWill2.setBounds(10, 350, 800, 200);
+		lblThisProgramWill2.setFont(new Font("Garamond", Font.BOLD, 25));
+		home.add(lblThisProgramWill2);
+		
+		JLabel lblThisProgramWill3 = new JLabel(" For your better Future");
+		lblThisProgramWill3.setBounds(300, 400, 800, 200);
+		lblThisProgramWill3.setFont(new Font("Garamond", Font.BOLD, 25));
+		home.add(lblThisProgramWill3);
+		//INFORMATION
+		JPanel Information = new JPanel();
+		Information.setBackground(new Color(240, 255, 240));
+		tabbedPane.addTab("Information", null, Information , null);
+		Information.setLayout(null);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "I'm FUCKED IN EITHER WAY!!", TitledBorder.CENTER, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 11), new Color(0, 0, 0)));
+		panel_2.setBackground(new Color(240, 255, 240));
+		panel_2.setBounds(20, 6, 750, 500);
+		Information.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel_4 = new JLabel(" Information ");
+		lblNewLabel_4.setBounds(51, 52, 300, 43);
+		lblNewLabel_4.setFont(new Font("Broadway", Font.PLAIN, 40));
+		panel_2.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("AWEKITE Incorp was establihed in 2014 and We are developing application  ");
+		lblNewLabel_5.setBounds(16, 150, 800, 16);
+		lblNewLabel_5.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		panel_2.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel(" One of our software that we are developed is BookTaxiForU");
+		lblNewLabel_6.setBounds(16, 180, 800, 16);
+		lblNewLabel_6.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		panel_2.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("BookTaxiForU aimed is targetted for University student to interconnected within Klang Valley ");
+		lblNewLabel_7.setBounds(16, 210, 800, 16);
+		lblNewLabel_7.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		panel_2.add(lblNewLabel_7);
+		
+		JLabel lblNewLabel_8 = new JLabel("BookTaxiForU also aimed to students so that they can explore more within their unversity  ");
+		lblNewLabel_8.setBounds(16, 240, 800, 16);
+		lblNewLabel_8.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		panel_2.add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_9 = new JLabel("The Route that we provided with reasonably price fare are:- ");
+		lblNewLabel_9.setBounds(16, 270, 800, 16);
+		lblNewLabel_9.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		panel_2.add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_10 = new JLabel("a)UIA-UTM (RM ) ");
+		lblNewLabel_10.setBounds(16, 330, 800, 16);
+		lblNewLabel_10.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		panel_2.add(lblNewLabel_10);
+		
+		JLabel lblNewLabel_12 = new JLabel("b)UIA-UKM (RM ) ");
+		lblNewLabel_12.setBounds(16, 360, 800, 16);
+		lblNewLabel_12.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		panel_2.add(lblNewLabel_12);
+		
+		JLabel lblNewLabel_13 = new JLabel("c)UIA-UM (RM )");
+		lblNewLabel_13.setBounds(16, 390, 800, 16);
+		lblNewLabel_13.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		panel_2.add(lblNewLabel_13);
+		
+		JLabel lblNewLabel_14 = new JLabel("d)UIA-UPM (RM )");
+		lblNewLabel_14.setBounds(16, 420, 800, 16);
+		lblNewLabel_14.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		panel_2.add(lblNewLabel_14);
+		
+		JLabel lblNewLabel_15 = new JLabel("e)UIA-USIM (RM ) ");
+		lblNewLabel_15.setBounds(16, 450, 800, 16);
+		lblNewLabel_15.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		panel_2.add(lblNewLabel_15);
+		//REGISTRATION
+		JPanel Registration = new JPanel();
+		Registration.setBackground(new Color(240, 255, 240));
+		tabbedPane.addTab("Registration", null, Registration, null);
+		Registration.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(null, "MIDDLEFINGERTOTHESKY", TitledBorder.CENTER, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 11), null));
+		panel_1.setBackground(new Color(240, 255, 240));
+		panel_1.setBounds(100, 0, 620, 566);
+		Registration.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblNewLabel_16 = new JLabel(" Registration ");
+		lblNewLabel_16.setBounds(51, 52, 300, 43);
+		lblNewLabel_16.setFont(new Font("Broadway", Font.PLAIN, 40));
+		panel_1.add(lblNewLabel_16);
+		
+		JLabel lblNewLabel_17 = new JLabel("You are required to fill up all the form given");
+		lblNewLabel_17.setBounds(21,100,300,40);
+		panel_1.add(lblNewLabel_17);
+		
+		JLabel label_1 = new JLabel("Name ");
+		label_1.setBounds(21, 200, 104, 14);
+		panel_1.add(label_1);
+		
+		
+		name = new JTextField();
+		name.setBounds(150, 200, 400, 20);
+		panel_1.add(name);
+		name.setColumns(30);
+//		String name1=name.getText(str);
+		
+		
+		JLabel label_2 = new JLabel("Phone number ");
+		label_2.setBounds(21, 250, 100, 14);
+		panel_1.add(label_2);
+		
+		phoneNum = new JTextField();
+		phoneNum.setBounds(150, 250, 400, 20);
+		panel_1.add(phoneNum);
+		phoneNum.setColumns(30);
+		JTextField phoneNum1=phoneNum;
+		
+		
+		JLabel label_3 = new JLabel("Route  ");
+		label_3.setBounds(21, 300, 74, 14);
+		panel_1.add(label_3);
+		
+		//route = new JComboBox();
+		route.setBounds(150, 300, 150, 20);
+		panel_1.add(route);
+		//route.setColumns(10);
+		
+		JLabel label_4 = new JLabel("Car  ");
+		label_4.setBounds(21, 350, 74, 14);
+		panel_1.add(label_4);
+		
+		//route = new JComboBox();
+		car.setBounds(150, 350, 150, 20);
+		panel_1.add(car);
+		//route.setColumns(10);
+		
+		JLabel label_5 = new JLabel (" You will receive notification through your phone message, thank you... ");
+		label_5.setBounds(21,400,400,20);
+		panel_1.add(label_5);
+		
+		JButton btnCalc = new JButton("Calculate");
+		 btnCalc.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent e) {
+		        JOptionPane.showMessageDialog((Component) e.getSource(), "Thank you for your services \n\n"
+		        		+ "Your Name         :   " +name.getText()+ "\n\n"
+		        		+ "Your Phone number :  " +phoneNum.getText()+ "\n\n"
+		        		+ "Your Route        :   " +(String)route.getSelectedItem()+"\n\n"
+		        		+ "Your Car:			"+(String)car.getSelectedItem()+"\n\n"
+		        		+ "Your Route Price  : " +routePrice[route.getSelectedIndex()]+ "\n\n"
+		        		+ "Your estimated fare:  " +String.format("RM %.2f", (routePrice[route.getSelectedIndex()]*carPrice[car.getSelectedIndex()])) +"\n\n"
+		        		+ "We will notify you through sms once we reach there\n\n");
+		      }
+		    });
+		btnCalc.setBounds(200, 474, 89, 23);
+		panel_1.add(btnCalc);
+		
+		//JOptionPane.showMessageDialog(btnCalc, null);
+		
+	   
+		
+		
+		JButton btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				name.setText("");
+				phoneNum.setText("");
+				route.setSelectedIndex(0);
+				car.setSelectedIndex(0);
+			}
+		});
+		btnReset.setBounds(300, 474, 89, 23);
+		panel_1.add(btnReset);
+		
+		
+		
+		
+		
+		
+		
+		
+	
+
+}}
+
